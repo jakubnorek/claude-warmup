@@ -52,7 +52,7 @@ jobs:
             exit 1
           fi
 
-          if grep -qi "rate limit" "$output_file"; then
+          if grep -Eqi "rate limit|session limit|usage limit|hit your" "$output_file"; then
             echo "Claude reported a rate limit; treating as warmup success."
             echo "✓ Warmup complete"
             exit 0
